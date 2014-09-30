@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
     EditText mEditText;
-    Button mButton;
+    Button myFancyButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,13 +20,20 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         mEditText = (EditText) findViewById(R.id.myFancyInput);
-        mButton = (Button) findViewById(R.id.myFancyButton);
+        myFancyButton = (Button) findViewById(R.id.myFancyButton);
 
-        mButton.setOnClickListener(new View.OnClickListener() {
+        myFancyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String textInput = mEditText.getText().toString();
-                Toast.makeText(getBaseContext(), "New Input: " + textInput, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        myFancyButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(getApplicationContext(), "Long Click", Toast.LENGTH_LONG).show();
+                return false;
             }
         });
     }
